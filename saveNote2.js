@@ -27,30 +27,36 @@ const showNotes = (file) => {
 };
 
 document.querySelector(".btnSave").addEventListener("click", () => {
-  console.log(keywordsArr);
-  const textArea = document.querySelector("textarea");
-
+  keywordsArr.forEach((kword) => {
+    const li = document
+      .querySelector("div.notesList ul")
+      .appendChild(document.createElement("li"));
+    li.textContent = kword;
+  });
   // downloadToFile(textArea.value, `notatka${noteDate}.txt`, "text/plain");
 });
+const keyword = document.querySelector("input.keywords");
 
 document.querySelector(".btnAdd").addEventListener("click", () => {
-  const keyword = document.querySelector("input.keywords");
-
   keywordCheck(keyword.value);
 });
 
-const keywordCheck = (keyword) => {
+keyword.addEventListener("keypress", (e) => {
+  if (e.keyCode === 13) {
+    keywordCheck(keyword.value);
+  }
+});
+
+const keywordCheck = (keyword, event) => {
   let string = keyword;
   string = string.replace(/\s/g, "");
   string = string.toLowerCase();
-  console.log(string);
 
   if (keywordsArr.length === 0) {
     keywordsArr.unshift(string);
   } else {
     const retValue = keywordsArr.findIndex((el) => el === string);
 
-    console.log(retValue);
     if (retValue === -1) {
       keywordsArr.unshift(string);
     } else {

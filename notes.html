@@ -8,8 +8,18 @@
     <title>Notatki</title>
   </head>
   <body>
-    <h1>Notatki:</h1>
-    <textarea name="note" class="note" cols="80" rows="50"></textarea>
+    <h1>Notatka:</h1>
+    <div style="display: flex">
+      <textarea name="note" class="note" cols="80" rows="50"></textarea>
+      <div class="notesList" style="flex-grow: 1">
+        <h2>Lista notatek:</h2>
+        <article>
+          <h3>Notatka z dnia<span class="date"></span></h3>
+          <p>Keywordy:</p>
+          <ul></ul>
+        </article>
+      </div>
+    </div>
     <input type="text" class="keywords" style="display: block" />
     <button type="button" class="btnAdd">Dodaj Keyword</button>
     <button type="button" class="btnSave">Zapisz Notatki</button>
